@@ -21,7 +21,9 @@ public class MemberApi {
     }
 
     @PostMapping
-    public void createMember(@RequestBody MemberSignUpRequest dto) {
+    public void createMember(
+            @RequestBody @Valid MemberSignUpRequest dto)
+    {
         memberRepository.save(dto.toEntity());
     }
 

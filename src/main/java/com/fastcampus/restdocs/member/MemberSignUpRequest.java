@@ -1,12 +1,18 @@
 package com.fastcampus.restdocs.member;
 
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
 
-@RequiredArgsConstructor
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+
+@Getter
 public class MemberSignUpRequest {
 
-    private final String email;
-    private final String name;
+    @Email
+    private String email;
+    @NotEmpty
+    private String name;
 
     public Member toEntity() {
         return new Member(email, name);
