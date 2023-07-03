@@ -35,4 +35,8 @@ public class Member {
         createdAt = LocalDateTime.now();
         updatedAt = LocalDateTime.now();
     }
+
+    public void updateName(final String name) {
+        this.name = name;
+    }
 }
