@@ -1,0 +1,15 @@
+# 단일 조회
+GET {{host}}/api/members/5
+Content-type: application/json
+
+###
+# 멤버 생성
+POST {{host}}/api/members
+Content-type: application/json
+
+{
+  "email": "hi@abc.com",
+  "name": "hi"
+}
+
+###
