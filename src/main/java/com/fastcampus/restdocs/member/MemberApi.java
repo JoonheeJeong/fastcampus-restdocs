@@ -1,6 +1,10 @@
 package com.fastcampus.restdocs.member;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -36,6 +40,13 @@ public class MemberApi {
         member.updateName(dto.getName());
         memberRepository.save(member);
         return new MemberResponse(member);
+    }
+
+    @GetMapping
+    public Page<MemberResponse> getMembers(
+            @PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable)
+    {
+        return memberRepository.findAll(pageable).map(MemberResponse::new);
     }
 
 }
